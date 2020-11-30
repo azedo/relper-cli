@@ -1,5 +1,4 @@
-release-helper
-==============
+# Release helper script
 
 Release helper cli to help/assist with proper release flow.
 
