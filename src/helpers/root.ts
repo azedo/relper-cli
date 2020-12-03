@@ -1,9 +1,15 @@
-const path = require('path')
+import * as path from 'path'
 
-function RootPath() {
-  const getBinPath = path.dirname(require.main?.filename || process.mainModule?.filename)
+/**
+ * Get the absolute path of the project's folder.
+ *
+ * @function rootPath
+ * @return {string} The absolute path to the project folder
+ */
+function rootPath(): string {
+  const getBinPath = path.dirname(require.main?.filename || process.mainModule?.filename || '')
 
   return path.join(getBinPath, '..')
 }
 
-export default RootPath()
+export default rootPath()
