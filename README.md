@@ -8,6 +8,7 @@ Release helper cli to help/assist with proper release flow.
 [![License](https://img.shields.io/npm/l/release-helper.svg)](https://github.com/scripts/release-helper/blob/master/package.json)
 
 <!-- toc -->
+* [Release helper script](#release-helper-script)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -18,7 +19,7 @@ $ npm install -g release-helper
 $ relper COMMAND
 running command...
 $ relper (-v|--version|version)
-release-helper/0.0.0 darwin-x64 node-v10.15.3
+release-helper/0.0.0 darwin-x64 node-v10.20.1
 $ relper --help [COMMAND]
 USAGE
   $ relper COMMAND
@@ -27,49 +28,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`relper bump-versions [FILE]`](#relper-bump-versions-file)
-* [`relper hello [FILE]`](#relper-hello-file)
 * [`relper help [COMMAND]`](#relper-help-command)
-* [`relper version:bump [FILE]`](#relper-versionbump-file)
-
-## `relper bump-versions [FILE]`
-
-bump/change the app version in package.json
-
-```
-USAGE
-  $ relper bump-versions [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ relper bump-version
-```
-
-_See code: [src/commands/bump-versions.ts](https://github.com/scripts/release-helper/blob/v0.0.0/src/commands/bump-versions.ts)_
-
-## `relper hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ relper hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ relper hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/scripts/release-helper/blob/v0.0.0/src/commands/hello.ts)_
+* [`relper version:bump`](#relper-versionbump)
+* [`relper version:get`](#relper-versionget)
 
 ## `relper help [COMMAND]`
 
@@ -86,21 +47,32 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
-## `relper version:bump [FILE]`
+## `relper version:bump`
 
-describe the command here
+bump the app version to the next major, minor or patch
 
 ```
 USAGE
-  $ relper version:bump [FILE]
+  $ relper version:bump
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help             show CLI help
+  -v, --version=version  new version
 ```
 
-_See code: [src/commands/version/bump.ts](https://github.com/scripts/release-helper/blob/v0.0.0/src/commands/version/bump.ts)_
+## `relper version:get`
+
+show the current version of the app
+
+```
+USAGE
+  $ relper version:get
+
+OPTIONS
+  -h, --help                   show CLI help
+  -p, --folderPath=folderPath  the project's main folder
+  -s, --silent                 return silent
+```
 <!-- commandsstop -->
