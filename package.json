@@ -1,12 +1,12 @@
 {
-  "name": "release-helper",
-  "description": "Release helper cli to help/assist with proper release flow.",
-  "version": "0.0.0",
+  "name": "relper-cli",
+  "description": "Release helper cli to help/assist with the release flow.",
+  "version": "0.1.0",
   "author": "Eduardo Azevedo Grigolo",
   "bin": {
     "relper": "./bin/run"
   },
-  "bugs": "https://github.com/scripts/release-helper/issues",
+  "bugs": "https://github.com/azedo/relper-cli/issues",
   "dependencies": {
     "@oclif/command": "1.8.0",
     "@oclif/config": "1.17.0",
@@ -22,25 +22,30 @@
     "@oclif/test": "1.2.7",
     "@types/chai": "4.2.14",
     "@types/inquirer": "7.3.1",
+    "@types/listr": "0.14.2",
     "@types/mocha": "8.0.4",
     "@types/node": "14.14.10",
-    "@typescript-eslint/eslint-plugin": "4.9.0",
-    "@typescript-eslint/parser": "4.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "chai": "4.2.0",
     "chalk": "4.1.0",
     "cli-ux": "5.5.1",
-    "eslint": "7.14.0",
-    "eslint-config-prettier": "6.15.0",
+    "eslint": "^7.24.0",
+    "eslint-config-azedo": "^0.2.2",
     "eslint-config-oclif": "3.1.0",
     "eslint-config-oclif-typescript": "0.2.0",
-    "eslint-plugin-prettier": "3.1.4",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-sonarjs": "^0.6.0",
     "globby": "11.0.1",
     "inquirer": "7.3.3",
     "mocha": "8.2.1",
     "nyc": "15.1.0",
+    "prettier": "^2.2.1",
     "ts-node": "8.10.2",
-    "typescript": "4.1.2",
-    "prettier": "2.2.1"
+    "typescript": "4.1.2"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -51,9 +56,12 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://git.frontiercargroup.org/tools/release-helper-cli",
+  "homepage": "https://github.com/azedo/relper-cli#readme",
   "keywords": [
-    "oclif"
+    "oclif",
+    "relper",
+    "cli",
+    "release"
   ],
   "license": "MIT",
   "main": "lib/index.js",
@@ -64,16 +72,24 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "https://git.frontiercargroup.org/tools/release-helper-cli",
+  "repository": "https://github.com/azedo/relper-cli.git",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
+    "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "types": "lib/index.d.ts",
   "_moduleAliases": {
     "@helpers": "src/helpers"
+  },
+  "relper": {
+    "branches": [
+      "main",
+      "release"
+    ]
   }
 }

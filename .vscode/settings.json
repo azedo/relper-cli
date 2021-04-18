@@ -5,5 +5,8 @@
   "files.exclude": {
     "node_modules/": false
   },
-  "svg.preview.background": "black"
+  "svg.preview.background": "black",
+  "conventionalCommits.scopes": [
+    "housekeeping"
+  ]
 }
