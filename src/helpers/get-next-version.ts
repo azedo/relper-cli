@@ -1,25 +1,8 @@
-import { exec } from 'child_process'
-import * as util from 'util'
+import runShellCommand from '@helpers/run-shell-command'
 
-const execProm = util.promisify(exec)
-
-/**
- * Get the next version from the branch name, if it exists.
- *
- * @function runShellCommand
- * @param {string} command - The shell command.
- * @param {function} cb - A callback function.
- */
-async function runShellCommand(command: string) {
-  let result
-
-  try {
-    result = await execProm(command)
-  } catch (ex) {
-    result = ex
-  }
-
-  return result
+interface NextVersionType {
+  name?: string
+  type?: string
 }
 
 /**
@@ -30,7 +13,7 @@ async function runShellCommand(command: string) {
  * @return {object.name} The version name
  * @return {object.type} The version type
  */
-export default async function getNextVersion(): Promise<{ name?: string; type?: string }> {
+export default async function getNextVersion(): Promise<NextVersionType> {
   return runShellCommand('git rev-parse --abbrev-ref HEAD').then((res) => {
     if (!res) {
       throw new Error('Something went wrong, check your code.')
@@ -49,8 +32,8 @@ export default async function getNextVersion(): Promise<{ name?: string; type?: 
 
     if (branch.type.includes('release') || branch.type.includes('hotfix')) {
       return branch
-    } else {
-      return {}
     }
+
+    return {}
   })
 }

@@ -1,6 +1,6 @@
 # Relper CLI
 
-Command line interface to help/assist with the release process.
+Command-line interface to help/assist with the release process.
 
 (\*_with some opinions_)
 

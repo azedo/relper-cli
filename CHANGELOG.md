@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### To Change
 
 - Update README, TODO and other configs
+- Update the `version:get` command
+- Update `get-next-version` and `get-app-current-data` helpers
 
 ### To Remove
 

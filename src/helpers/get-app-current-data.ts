@@ -1,5 +1,4 @@
-import * as fs from 'fs'
-
+import { readFileSync } from 'fs'
 import rootDir from './root'
 
 interface ReturnType {
@@ -10,22 +9,20 @@ interface ReturnType {
 /**
  * Get the current version from the package.json file
  *
- * @function getAppCurrentData
+ * @param {string} folderPath The root dir of the codebase
  * @return {ReturnType | undefined} The current app version or undefined if not found
  */
-export default function getAppCurrentData(folderPath = rootDir): ReturnType | undefined {
+export default function getAppCurrentData(folderPath: string = rootDir): ReturnType | undefined {
   const fileName = 'package.json'
 
   try {
-    const readFile = fs.readFileSync(`${folderPath}/${fileName}`, { encoding: 'utf-8' })
+    const readFile = readFileSync(`${folderPath}/${fileName}`, { encoding: 'utf-8' })
     const { name, version } = JSON.parse(readFile)
 
-    const appData = {
+    return {
       name,
       version,
     }
-
-    return appData
   } catch (error) {
     if (error.code === 'ENOENT') {
       throw new Error(`There's no file ${fileName} in the folder ${folderPath}`)
