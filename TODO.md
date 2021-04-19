@@ -10,11 +10,13 @@
   - [x] set the app version based on semver
   - [x] set the version based on the current version
 
-- [x] `updatePackageFiles`
+- [ ] `updatePackageFiles`
 
   - [x] check if files exist first (package.json and package-lock.json)
   - [x] update package.json file with the current version
   - [x] run `npm i` to install all dependencies and recreate package-lock.json file
+  - [ ] pin dependencies in `package.json` - as an optional command
+  - [ ] create `relper` config in `package.json` - as an optional command
 
 - [ ] `updateReadme`
 
@@ -33,6 +35,10 @@
 
 - [ ] show log for everything that is being done
 
-- [ ] Pin dependencies in `package.json` - as an optional command
+- [ ] add tests
 
-- [ ] Publish `RELPER` to NPM
+  - [ ] command version:bump
+  - [ ] command version:get
+  - [ ] hook check-for-configs
+
+- [ ] publish `RELPER` to NPM
