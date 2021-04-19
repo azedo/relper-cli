@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
-import rootDir from './root'
+import rootDir from './root-dir'
 import runShellCommand from '@helpers/run-shell-command'
 
 /**

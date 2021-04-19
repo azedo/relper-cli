@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs'
-import rootDir from './root'
+import rootDir from './root-dir'
 
 interface ReturnType {
   name: string
