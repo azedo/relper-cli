@@ -1,4 +1,5 @@
 import runShellCommand from '@helpers/run-shell-command'
+import getAppCurrentData from '@helpers/get-app-current-data'
 
 /**
  * Check if the current branch is main or release/hotfix
@@ -7,6 +8,7 @@ import runShellCommand from '@helpers/run-shell-command'
  */
 export default async function checkBranchName(): Promise<{ main: () => boolean; release: () => boolean }> {
   let branchName: string
+  const mainBranch = getAppCurrentData()?.relper.branches.main || 'main'
 
   await runShellCommand('git rev-parse --abbrev-ref HEAD').then((res) => {
     if (!res) {
@@ -25,7 +27,7 @@ export default async function checkBranchName(): Promise<{ main: () => boolean; 
 
   const main = () => {
     // TODO Get the main branch name from config, default to `main`
-    if (branchName === 'main') {
+    if (branchName === mainBranch) {
       return true
     }
 

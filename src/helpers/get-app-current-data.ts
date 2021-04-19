@@ -5,6 +5,14 @@ interface ReturnType {
   name: string
   version: string
   repository: string
+  relper: {
+    branches: {
+      main: string
+      develop?: string
+      release?: string
+      hotfix?: string
+    }
+  }
 }
 
 /**
@@ -18,12 +26,13 @@ export default function getAppCurrentData(folderPath: string = rootDir): ReturnT
 
   try {
     const readFile = readFileSync(`${folderPath}/${fileName}`, { encoding: 'utf-8' })
-    const { name, version, repository } = JSON.parse(readFile)
+    const { name, version, repository, relper } = JSON.parse(readFile)
 
     return {
       name,
       version,
       repository,
+      relper,
     }
   } catch (error) {
     if (error.code === 'ENOENT') {

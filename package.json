@@ -70,7 +70,10 @@
     "bin": "relper",
     "plugins": [
       "@oclif/plugin-help"
-    ]
+    ],
+    "hooks": {
+      "init": "./lib/hooks/init/check-for-configs"
+    }
   },
   "repository": "https://github.com/azedo/relper-cli.git",
   "scripts": {
@@ -87,9 +90,10 @@
     "@helpers": "src/helpers"
   },
   "relper": {
-    "branches": [
-      "main",
-      "release"
-    ]
+    "branches": {
+      "main": "main",
+      "release": "release",
+      "hotfix": "hotfix"
+    }
   }
 }
