@@ -3,10 +3,10 @@ import * as inquirer from 'inquirer'
 import chalk from 'chalk'
 import Listr from 'listr'
 
-import getAppCurrentData from '@helpers/get-app-current-data'
-import updatePackageFile, { cleanUp, installDependencies } from '@helpers/update-package-file'
-import updateChangelog from '@helpers/update-changelog'
-import updateReadme from '@helpers/update-readme'
+import getAppCurrentData from '../../helpers/get-app-current-data'
+import updatePackageFile, { cleanUp, installDependencies } from '../../helpers/update-package-file'
+import updateChangelog from '../../helpers/update-changelog'
+import updateReadme from '../../helpers/update-readme'
 
 type Semver = 'major' | 'minor' | 'patch'
 

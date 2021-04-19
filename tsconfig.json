@@ -3,20 +3,22 @@
     "lib": ["es2018"],
     "module": "commonjs",
     "target": "es2018",
+    "composite": true,
     "strict": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "importHelpers": true,
     "outDir": "lib",
     "rootDir": "src",
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["src/helpers/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["./", "src/**/*"],
+  "exclude": ["node_modules", "lib", "test"]
 }

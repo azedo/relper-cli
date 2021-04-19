@@ -1,4 +1,4 @@
-import runShellCommand from '@helpers/run-shell-command'
+import runShellCommand from '../helpers/run-shell-command'
 
 interface NextVersionType {
   name?: string

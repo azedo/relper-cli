@@ -1,5 +1,5 @@
-import runShellCommand from '@helpers/run-shell-command'
-import getAppCurrentData from '@helpers/get-app-current-data'
+import runShellCommand from '../helpers/run-shell-command'
+import getAppCurrentData from '../helpers/get-app-current-data'
 
 /**
  * Check if the current branch is main or release/hotfix

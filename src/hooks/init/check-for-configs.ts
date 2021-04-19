@@ -1,6 +1,6 @@
 import { Hook } from '@oclif/config'
 
-import log from '@helpers/log-messages'
+import log from '../../helpers/log-messages'
 
 const hook: Hook<'init'> = async function (opts) {
   const hasConfig = opts.config.pjson.relper

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
 import rootDir from './root-dir'
-import runShellCommand from '@helpers/run-shell-command'
+import runShellCommand from '../helpers/run-shell-command'
 
 /**
  * Update the version in the package.json file.

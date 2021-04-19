@@ -1,9 +1,9 @@
 import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
 
-import log from '@helpers/log-messages'
-import getAppCurrentData from '@helpers/get-app-current-data'
-import getNextVersion from '@helpers/get-next-version'
+import log from '../../helpers/log-messages'
+import getAppCurrentData from '../../helpers/get-app-current-data'
+import getNextVersion from '../../helpers/get-next-version'
 
 export default class VersionGet extends Command {
   static description = 'show the current version of the app'

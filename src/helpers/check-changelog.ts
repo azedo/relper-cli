@@ -1,8 +1,8 @@
 import { exec } from 'child_process'
 import { existsSync } from 'fs'
 
-import log from '@helpers/log-messages'
-import rootDir from '@helpers/root-dir'
+import log from '../helpers/log-messages'
+import rootDir from '../helpers/root-dir'
 import { ErrorEnums } from '../types/error-enums'
 
 /**

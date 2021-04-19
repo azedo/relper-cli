@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync } from 'fs'
 // import { exec } from 'child_process'
 // import ora from 'ora'
 
-import getCurrentDate from '@helpers/get-current-date'
-import getAppCurrentData from '@helpers/get-app-current-data'
-// import log from '@helpers/log-messages'
-// import rootDir from './root'
+import getCurrentDate from '../helpers/get-current-date'
+import getAppCurrentData from '../helpers/get-app-current-data'
+// import log from '../helpers/log-messages'
+// import rootDir from '../helpers/root-dir'
 
 interface ContentType {
   add: string[]

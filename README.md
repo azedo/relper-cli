@@ -14,21 +14,23 @@ Command-line interface to help/assist with the release process.
 - [Relper CLI](#relper-cli)
   - [Usage](#usage)
   - [Commands](#commands)
+    - [`relper create:changelog`](#relper-createchangelog)
     - [`relper help [COMMAND]`](#relper-help-command)
     - [`relper version:bump`](#relper-versionbump)
     - [`relper version:get`](#relper-versionget)
-    <!-- tocstop -->
+
+<!-- tocstop -->
 
 ## Usage
 
 <!-- usage -->
 
 ```sh-session
-$ npm install -g relper
+$ npm install -g relper-cli
 $ relper COMMAND
 running command...
 $ relper (-v|--version|version)
-release-helper/0.0.0 darwin-x64 node-v10.20.1
+relper-cli/0.1.0 darwin-x64 node-v12.18.3
 $ relper --help [COMMAND]
 USAGE
   $ relper COMMAND
@@ -41,13 +43,26 @@ USAGE
 
 <!-- commands -->
 
-- [`relper help [COMMAND]`](#relper-help-command)
-- [`relper version:bump`](#relper-versionbump)
-- [`relper version:get`](#relper-versionget)
+- [Relper CLI](#relper-cli)
+  - [Usage](#usage)
+  - [Commands](#commands)
+    - [`relper create:changelog`](#relper-createchangelog)
+    - [`relper help [COMMAND]`](#relper-help-command)
+    - [`relper version:bump`](#relper-versionbump)
+    - [`relper version:get`](#relper-versionget)
+
+### `relper create:changelog`
+
+create a changelo file from our initial template
+
+```bash
+USAGE
+  $ relper create:changelog
+```
+
+_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/create/changelog.ts)_
 
 ### `relper help [COMMAND]`
-
-display help for relper
 
 ```bash
 USAGE
@@ -75,6 +90,8 @@ OPTIONS
   -v, --version=version  new version
 ```
 
+_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/version/bump.ts)_
+
 ### `relper version:get`
 
 show the current version of the app
@@ -88,5 +105,7 @@ OPTIONS
   -p, --folderPath=folderPath  the project's main folder
   -s, --silent                 return silent
 ```
+
+_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/version/bump.ts)_
 
 <!-- commandsstop -->

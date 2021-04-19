@@ -1,7 +1,7 @@
 import { expect, test } from '@oclif/test'
 
-import getAppCurrentData from '../../../src/helpers/getAppCurrentData'
-import getNextVersion from '../../../src/helpers/getNextVersion'
+import getAppCurrentData from '../../../src/helpers/get-app-current-data'
+import getNextVersion from '../../../src/helpers/get-next-version'
 
 describe('version:get', () => {
   test
