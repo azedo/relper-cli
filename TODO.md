@@ -1,7 +1,5 @@
 # List of future things to have (or ideas)
 
-- [ ] show log for everything that is being done
-
 - [x] `getAppVersion`
 
   - [x] get current app version from the release/hotfix branch name
@@ -21,34 +19,20 @@
 - [ ] `updateReadme`
 
   - [ ] check if file exist first (README.md)
-  - [ ] update the badge version number (if exists also!)
+  - [ ] update the badge version number (if exists also!) - this is possible to get from github repo!
 
 - [ ] `updateChangelog`
 
-  - [ ] check if file exist first (CHANGELOG.md)
-  - [ ] check for block with version
-    - [ ] if it doesn't exist create one with some placeholder text
-    - [ ] if it exists, but it's empty or has the placeholder text, throw an error
-  - [ ] create link for the new version block
-  - [ ] update the comparison link to check against the new version
+  - [x] check if file exist first (CHANGELOG.md)
+    - [ ] if it doesn't exists, offer to create one
+  - [x] check for block with version
+    - [x] if it doesn't exist create one with the text from the `UNRELEASED` block
+    - [ ] if it exists, it's not empty and there's text in the `UNRELEASED` block, as if it should be updated (not replaced, but added to the existing text)
+  - [x] create link for the new version block
+  - [x] update the comparison link to check against the new version
 
-- [ ] `getMasterFile`
-
-  - [ ] get summary file in the cloud server
-  - [ ] if there's none, return false
-
-- [ ] `updateCoverage`
-
-  - [ ] update cloud server with new/updated coverage summary file if it has increased from current one
-
-- [ ] `getCoverageReport`
-
-  - [ ] compare coverage values
-
-- [ ] `checkCoverage`
-
-  - [ ] check coverage -> main file
+- [ ] show log for everything that is being done
 
 - [ ] Pin dependencies in `package.json` - as an optional command
 
-- [ ] Publish to NPM
+- [ ] Publish `RELPER` to NPM
