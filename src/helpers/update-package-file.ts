@@ -1,10 +1,7 @@
-import fs from 'fs'
-import { exec } from 'child_process'
-import * as util from 'util'
+import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
 import rootDir from './root'
-
-const execProm = util.promisify(exec)
+import runShellCommand from '@helpers/run-shell-command'
 
 /**
  * Update the version in the package.json file.
@@ -14,11 +11,11 @@ const execProm = util.promisify(exec)
  * @return {void} Returns silent
  */
 export default function updatePackageFile(version: string): void {
-  const packageJsonFile = fs.readFileSync(`${rootDir}/package.json`, { encoding: 'utf-8' })
+  const packageJsonFile = readFileSync(`${rootDir}/package.json`, { encoding: 'utf-8' })
   const replaceJLFData = packageJsonFile.replace(/"version": "\d+.\d+.\d+",/, `"version": "${version}",`)
 
   try {
-    fs.writeFileSync('./package.json', replaceJLFData)
+    writeFileSync('./package.json', replaceJLFData)
   } catch (error) {
     console.error(error)
   }
@@ -33,9 +30,9 @@ export default function updatePackageFile(version: string): void {
 export function cleanUp(): void {
   const file = `${rootDir}/package-lock.json`
 
-  if (fs.existsSync(file)) {
+  if (existsSync(file)) {
     try {
-      fs.unlinkSync(file)
+      unlinkSync(file)
     } catch (error) {
       console.error(error)
     }
@@ -49,9 +46,15 @@ export function cleanUp(): void {
  * @return {void} Returns silent unless there's an error
  */
 export async function installDependencies(): Promise<void> {
-  try {
-    await execProm('npm i')
-  } catch (error) {
-    console.error(error)
-  }
+  runShellCommand('npm i').then((res) => {
+    if (!res) {
+      throw new Error('Something went wrong, check your code.')
+    }
+
+    const { stderr } = res
+
+    if (stderr) {
+      throw new Error(stderr)
+    }
+  })
 }
