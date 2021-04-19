@@ -7,6 +7,7 @@
   },
   "svg.preview.background": "black",
   "conventionalCommits.scopes": [
-    "housekeeping"
+    "housekeeping",
+    "configs"
   ]
 }

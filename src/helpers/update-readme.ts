@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 
 import rootDir from './root-dir'
 
@@ -27,7 +27,7 @@ export default function updateReadme(version: string): void {
   //       If the user doesn't want to user `https://badgen.net/` or `https://shields.io/`, or uses a private repo, they might need to include a static badge for the `app version` (also, this name should be customizable - how?)
 
   try {
-    const readFile = fs.readFileSync(filePath, { encoding: 'utf-8' })
+    const readFile = readFileSync(filePath, { encoding: 'utf-8' })
 
     if (!readFile.includes(`img.shields.io/badge/App%20version-v${version}`)) {
       const replaceData = readFile.replace(
@@ -35,7 +35,7 @@ export default function updateReadme(version: string): void {
         `img.shields.io/badge/App%20version-v${version}`
       )
 
-      fs.writeFileSync(filePath, replaceData)
+      writeFileSync(filePath, replaceData)
     }
   } catch (error) {
     if (error.code === 'ENOENT') {
