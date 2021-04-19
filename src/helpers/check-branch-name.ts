@@ -9,6 +9,8 @@ import getAppCurrentData from '@helpers/get-app-current-data'
 export default async function checkBranchName(): Promise<{ main: () => boolean; release: () => boolean }> {
   let branchName: string
   const mainBranch = getAppCurrentData()?.relper.branches.main || 'main'
+  const releaseBranch = getAppCurrentData()?.relper.branches.release || 'release'
+  const hotfixBranch = getAppCurrentData()?.relper.branches.hotfix || 'hotfix'
 
   await runShellCommand('git rev-parse --abbrev-ref HEAD').then((res) => {
     if (!res) {
@@ -26,7 +28,6 @@ export default async function checkBranchName(): Promise<{ main: () => boolean; 
   })
 
   const main = () => {
-    // TODO Get the main branch name from config, default to `main`
     if (branchName === mainBranch) {
       return true
     }
@@ -35,8 +36,7 @@ export default async function checkBranchName(): Promise<{ main: () => boolean; 
   }
 
   const release = () => {
-    // TODO Get the release/hotfix branch names from config, default to `release` and `hotfix`
-    if (branchName.includes('release') || branchName.includes('hotfix')) {
+    if (branchName.includes(releaseBranch) || branchName.includes(hotfixBranch)) {
       return true
     }
 
