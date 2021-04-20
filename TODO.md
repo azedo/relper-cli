@@ -41,4 +41,11 @@
   - [ ] command version:get
   - [ ] hook check-for-configs
 
-- [ ] publish `RELPER` to NPM
+- [x] publish `RELPER` to NPM
+
+- [ ] Add a general help command?
+
+  - [ ] Add/share links for git branching strategy and why you should/shouldn't adopt one
+
+- [x] `create:changelog`
+- [x] `create:config`

@@ -32,24 +32,42 @@ USAGE
 ## Commands
 
 <!-- commands -->
-* [`relper create:changelog [FILE]`](#relper-createchangelog-file)
+* [`relper create:changelog`](#relper-createchangelog)
+* [`relper create:config`](#relper-createconfig)
 * [`relper help [COMMAND]`](#relper-help-command)
 * [`relper version:bump`](#relper-versionbump)
 * [`relper version:get`](#relper-versionget)
 
-## `relper create:changelog [FILE]`
+## `relper create:changelog`
 
 ```
 USAGE
-  $ relper create:changelog [FILE]
+  $ relper create:changelog
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -f, --force    force replace action
+  -h, --help     show CLI help
+  -r, --replace  replace CHANGELOG
+  -s, --silent   don't show any logs
 ```
 
 _See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/create/changelog.ts)_
+
+## `relper create:config`
+
+```
+USAGE
+  $ relper create:config
+
+OPTIONS
+  -f, --force        force replace action
+  -h, --help         show CLI help
+  -i, --interactive  interactive config creator
+  -r, --replace      replace relper config
+  -s, --silent       don't show any logs
+```
+
+_See code: [src/commands/create/config.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/create/config.ts)_
 
 ## `relper help [COMMAND]`
 
@@ -74,7 +92,6 @@ USAGE
 
 OPTIONS
   -h, --help             show CLI help
-  -t, --test
   -v, --version=version  new version
 ```
 

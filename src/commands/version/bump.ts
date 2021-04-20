@@ -27,6 +27,7 @@ export default class VersionBump extends Command {
 
   static flags = {
     help: flags.help({ char: 'h' }),
+    // flag with a value (-v, --version)
     version: flags.string({ char: 'v', description: 'new version' }),
   }
 
