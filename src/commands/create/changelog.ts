@@ -1,10 +1,11 @@
 import { Command, flags } from '@oclif/command'
-import { existsSync, copyFileSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 import inquirer from 'inquirer'
+import chalk from 'chalk'
 
 import rootDir from '../../helpers/root-dir'
 import log, { LogStatus } from '../../helpers/log-messages'
-import chalk from 'chalk'
+import getAppCurrentData from '../../helpers/get-app-current-data'
 
 export default class CreateChangelog extends Command {
   static description = 'create a CHANGELOG file based on an initial template'
@@ -29,11 +30,14 @@ export default class CreateChangelog extends Command {
 
   private copyFile() {
     const { flags: flag } = this.parse(CreateChangelog)
+    const templateFile = readFileSync(`${rootDir}/src/templates/CHANGELOG.md`, { encoding: 'utf-8' })
+    const repoUrl = getAppCurrentData()?.repository.replace('.git', '')
+    const addLastLine = templateFile.concat(`\n[unreleased]: ${repoUrl}/compare/unreleased...main\n`)
 
     if (flag.replace) this.logger('CHANGELOG.md replaced', 'success')
     if (!flag.replace) this.logger('CHANGELOG.md created!', 'success')
 
-    return copyFileSync(`${rootDir}/src/templates/CHANGELOG.md`, './CHANGELOG.md')
+    return writeFileSync('./CHANGELOG.md', addLastLine, { encoding: 'utf-8' })
   }
 
   async run(): Promise<void> {
@@ -48,6 +52,11 @@ export default class CreateChangelog extends Command {
       },
     ]
 
+    // If there's no CHANGELOG, create the a new one
+    if (!existsSync(fileName)) {
+      return this.copyFile()
+    }
+
     // File already exists, warn the user and show them how to bypass this
     if (!flag.replace) {
       this.logger('CHANGELOG.md already exists! Add the flags --replace [--force] to override it.', 'error')
@@ -55,11 +64,6 @@ export default class CreateChangelog extends Command {
 
     // Force replace the existing file
     if (flag.force) {
-      return this.copyFile()
-    }
-
-    // If there's no CHANGELOG, create the a new one
-    if (!existsSync(fileName)) {
       return this.copyFile()
     }
 

@@ -87,7 +87,7 @@ function getUnreleasedBlock(file: string[]): [ContentType, number, number] {
   }
 
   file.forEach((line, i) => {
-    if (isUnreleasedGroup && line.startsWith('## ')) {
+    if (isUnreleasedGroup && (line.startsWith('## ') || line.startsWith('['))) {
       isUnreleasedGroup = false
       unreleasedGroupLastIndex = i
     } else if (isUnreleasedGroup && isAddedGroup) {
@@ -132,13 +132,11 @@ export default function updateChangelog(version: string): boolean | string {
   const changelogFile = readFileSync('./CHANGELOG.md', { encoding: 'utf-8' })
   const changelogArray = changelogFile.split('\n')
   // let updatedText = 'CHANGELOG checked'
+  const unreleasedBlock = getUnreleasedBlock(changelogArray)
   let newCLFile = changelogFile
 
   if (!changelogFile.includes(`## [${version}]`)) {
     // spinner.text = "Adding latest version's block..."
-
-    const unreleasedBlock = getUnreleasedBlock(changelogArray)
-
     // now we need to create the new block and add it to the file
     const newChanges = createNewVersionBlock(unreleasedBlock[0], version)
     const withBlankUnreleased = [

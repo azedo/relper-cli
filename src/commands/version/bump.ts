@@ -7,6 +7,9 @@ import getAppCurrentData from '../../helpers/get-app-current-data'
 import updatePackageFile, { cleanUp, installDependencies } from '../../helpers/update-package-file'
 import updateChangelog from '../../helpers/update-changelog'
 import updateReadme from '../../helpers/update-readme'
+import checkChangelog from '../../helpers/check-changelog'
+import log from '../../helpers/log-messages'
+import { ErrorEnums } from '../../types/error-enums'
 
 type Semver = 'major' | 'minor' | 'patch'
 
@@ -41,11 +44,14 @@ export default class VersionBump extends Command {
 
   private doneLog = (version: string): void => {
     this.log('')
-    this.log(`Done! New version is ${chalk.magenta(version)}`)
+    log(`Done! New version is ${chalk.magenta(version)}`, 'success')
   }
 
   private sameVersionLog = (version: string): void =>
-    this.log(`Nothing to do here! Try setting a different version - ${chalk.magenta('current version ' + version)}`)
+    log(
+      `Nothing to do here! Try setting a different version - ${chalk.magenta('current version ' + version)}`,
+      'warning'
+    )
 
   private actions = async (version: string): Promise<void> => {
     const tasks = new Listr([
@@ -142,6 +148,11 @@ export default class VersionBump extends Command {
   async run(): Promise<string | boolean | void> {
     const { flags: flag } = this.parse(VersionBump)
     const appData = getAppCurrentData()
+    const checkForUpdates = await checkChangelog(true)
+
+    if (!checkForUpdates || checkForUpdates === ErrorEnums.ERROR_NO_CHANGELOG_UPDATES) {
+      return log('There are no changes in the CHANGELOG! You need to update it before using this command.', 'error')
+    }
 
     const otherVersionQuestion = {
       type: 'input',
