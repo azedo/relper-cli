@@ -1,7 +1,7 @@
 {
   "name": "relper-cli",
   "description": "Release helper cli to help/assist with the release flow.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Eduardo Azevedo Grigolo",
   "bin": {
     "relper": "./bin/run"

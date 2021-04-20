@@ -26,14 +26,16 @@
 - [ ] `updateChangelog`
 
   - [x] check if file exist first (CHANGELOG.md)
-    - [ ] if it doesn't exists, offer to create one
+    - [x] if it doesn't exists, offer to create one
   - [x] check for block with version
     - [x] if it doesn't exist create one with the text from the `UNRELEASED` block
     - [ ] if it exists, it's not empty and there's text in the `UNRELEASED` block, as if it should be updated (not replaced, but added to the existing text)
   - [x] create link for the new version block
   - [x] update the comparison link to check against the new version
+  - [x] Fix bug for bumping the version when the CHANGELOG is blank (initial data)
+  - [x] If no changes were added, throw an error and warn the user to do so!
 
-- [ ] show log for everything that is being done
+- [x] show log for everything that is being done
 
 - [ ] add tests
 
