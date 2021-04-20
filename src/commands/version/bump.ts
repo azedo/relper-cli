@@ -28,7 +28,6 @@ export default class VersionBump extends Command {
   static flags = {
     help: flags.help({ char: 'h' }),
     version: flags.string({ char: 'v', description: 'new version' }),
-    test: flags.boolean({ char: 't' }),
   }
 
   private startLog = (appName?: string, version?: string): void => {

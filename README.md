@@ -10,21 +10,12 @@ Command-line interface to help/assist with the release process.
 [![License](https://img.shields.io/npm/l/relper-cli.svg)](https://github.com/azedo/relper-cli/blob/master/package.json)
 
 <!-- toc -->
-
-- [Relper CLI](#relper-cli)
-  - [Usage](#usage)
-  - [Commands](#commands)
-    - [`relper create:changelog`](#relper-createchangelog)
-    - [`relper help [COMMAND]`](#relper-help-command)
-    - [`relper version:bump`](#relper-versionbump)
-    - [`relper version:get`](#relper-versionget)
-
+* [Relper CLI](#relper-cli)
 <!-- tocstop -->
 
 ## Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g relper-cli
 $ relper COMMAND
@@ -36,35 +27,33 @@ USAGE
   $ relper COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 ## Commands
 
 <!-- commands -->
+* [`relper create:changelog [FILE]`](#relper-createchangelog-file)
+* [`relper help [COMMAND]`](#relper-help-command)
+* [`relper version:bump`](#relper-versionbump)
+* [`relper version:get`](#relper-versionget)
 
-- [Relper CLI](#relper-cli)
-  - [Usage](#usage)
-  - [Commands](#commands)
-    - [`relper create:changelog`](#relper-createchangelog)
-    - [`relper help [COMMAND]`](#relper-help-command)
-    - [`relper version:bump`](#relper-versionbump)
-    - [`relper version:get`](#relper-versionget)
+## `relper create:changelog [FILE]`
 
-### `relper create:changelog`
-
-create a changelo file from our initial template
-
-```bash
+```
 USAGE
-  $ relper create:changelog
+  $ relper create:changelog [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
 ```
 
-_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/create/changelog.ts)_
+_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/create/changelog.ts)_
 
-### `relper help [COMMAND]`
+## `relper help [COMMAND]`
 
-```bash
+```
 USAGE
   $ relper help [COMMAND]
 
@@ -77,26 +66,23 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
-### `relper version:bump`
+## `relper version:bump`
 
-bump the app version to the next major, minor or patch
-
-```bash
+```
 USAGE
   $ relper version:bump
 
 OPTIONS
   -h, --help             show CLI help
+  -t, --test
   -v, --version=version  new version
 ```
 
-_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/version/bump.ts)_
+_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/version/bump.ts)_
 
-### `relper version:get`
+## `relper version:get`
 
-show the current version of the app
-
-```bash
+```
 USAGE
   $ relper version:get
 
@@ -106,6 +92,5 @@ OPTIONS
   -s, --silent                 return silent
 ```
 
-_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.0.1/src/commands/version/bump.ts)_
-
+_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/version/get.ts)_
 <!-- commandsstop -->
