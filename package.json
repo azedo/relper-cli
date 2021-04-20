@@ -93,6 +93,7 @@
   "relper": {
     "branches": {
       "main": "main",
+      "develop": "develop",
       "release": "release",
       "hotfix": "hotfix"
     }
