@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-type Status = 'info' | 'success' | 'error' | 'warning'
+export type LogStatus = 'info' | 'success' | 'error' | 'warning'
 
 /**
  * Log messages function. Standardize the log messages in the terminal.
@@ -9,7 +9,7 @@ type Status = 'info' | 'success' | 'error' | 'warning'
  * @param {Status} [status='info'] the type/status of the message
  * @returns {void} Since it's a logging function for the terminal, it doesn't return anything
  */
-export default function log(message: unknown, status: Status = 'info'): void {
+export default function log(message: unknown, status: LogStatus = 'info'): void {
   let logger = chalk.blue
 
   switch (status) {

@@ -8,6 +8,7 @@
   "svg.preview.background": "black",
   "conventionalCommits.scopes": [
     "housekeeping",
-    "configs"
+    "configs",
+    "changelog"
   ]
 }
