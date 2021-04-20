@@ -28,8 +28,7 @@ export default function checkChangelog(): void {
     if (!existsSync(changelogPath)) {
       log("There isn't a CHANGELOG in this repository!", 'error')
       // Tell the user how to add a one via the CLI
-      // TODO: Command still doesn't exists! Uncomment when it's introduced!
-      // log("If you'd like to use the RELPER CLI to add a CHANGELOG, type `relper create:changelog`", 'info')
+      log("If you'd like to use the RELPER CLI to add a CHANGELOG, type `relper create:changelog`", 'info')
 
       return ErrorEnums.ERROR_NO_CHANGELOG_FILE
     }

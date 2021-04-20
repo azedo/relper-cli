@@ -3,7 +3,7 @@ import { existsSync, copyFileSync } from 'fs'
 import inquirer from 'inquirer'
 
 import rootDir from '../../helpers/root-dir'
-import log, { LogStatus } from '@helpers/log-messages'
+import log, { LogStatus } from '../../helpers/log-messages'
 import chalk from 'chalk'
 
 export default class CreateChangelog extends Command {
@@ -11,9 +11,11 @@ export default class CreateChangelog extends Command {
 
   static flags = {
     help: flags.help({ char: 'h' }),
-    // flag with a value (-r, --replace)
+    // flag with no value (-r, --replace)
     replace: flags.boolean({ char: 'r', description: 'replace CHANGELOG' }),
+    // flag with no value (-f, --force) that depends on '--replace'
     force: flags.boolean({ char: 'f', description: 'force replace action', dependsOn: ['replace'] }),
+    // flag with no value (-s, --silent)
     silent: flags.boolean({ char: 's', description: "don't show any logs" }),
   }
 
