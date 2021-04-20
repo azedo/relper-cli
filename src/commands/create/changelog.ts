@@ -19,16 +19,21 @@ export default class CreateChangelog extends Command {
     silent: flags.boolean({ char: 's', description: "don't show any logs" }),
   }
 
-  private action() {
-    return copyFileSync(`${rootDir}/src/templates/CHANGELOG.md`, './CHANGELOG.md')
-  }
-
   private logger(message: string, status: LogStatus) {
     const { flags: flag } = this.parse(CreateChangelog)
 
     if (!flag.silent) {
       log(message, status)
     }
+  }
+
+  private copyFile() {
+    const { flags: flag } = this.parse(CreateChangelog)
+
+    if (flag.replace) this.logger('CHANGELOG.md replaced', 'success')
+    if (!flag.replace) this.logger('CHANGELOG.md created!', 'success')
+
+    return copyFileSync(`${rootDir}/src/templates/CHANGELOG.md`, './CHANGELOG.md')
   }
 
   async run(): Promise<void> {
@@ -50,22 +55,19 @@ export default class CreateChangelog extends Command {
 
     // Force replace the existing file
     if (flag.force) {
-      this.logger('CHANGELOG.md replaced', 'success')
-      return this.action()
+      return this.copyFile()
     }
 
     // If there's no CHANGELOG, create the a new one
     if (!existsSync(fileName)) {
-      this.logger('CHANGELOG.md created!', 'success')
-      return this.action()
+      return this.copyFile()
     }
 
     // If there's a file already and the user used the `-r` flag, prompt them to make sure they know what they are doing
     if (existsSync(fileName) && flag.replace) {
       return inquirer.prompt(replaceChangelogQuestions).then((answers: { replaceChangelogWarning: boolean }) => {
         if (answers.replaceChangelogWarning) {
-          this.logger('CHANGELOG.md replaced', 'success')
-          return this.action()
+          return this.copyFile()
         }
       })
     }
