@@ -4,10 +4,17 @@ Command-line interface to help/assist with the release process.
 
 (\*_with some opinions_)
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/relper-cli.svg)](https://npmjs.org/package/relper-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/relper-cli.svg)](https://npmjs.org/package/relper-cli)
 [![License](https://img.shields.io/npm/l/relper-cli.svg)](https://github.com/azedo/relper-cli/blob/master/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=alert_status)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=bugs)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=code_smells)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=azedo_relper-cli&metric=sqale_index)](https://sonarcloud.io/dashboard?id=azedo_relper-cli)
 
 <!-- toc -->
 * [Relper CLI](#relper-cli)
@@ -21,7 +28,7 @@ $ npm install -g relper-cli
 $ relper COMMAND
 running command...
 $ relper (-v|--version|version)
-relper-cli/0.1.0 darwin-x64 node-v12.18.3
+relper-cli/0.2.0 darwin-x64 node-v12.18.3
 $ relper --help [COMMAND]
 USAGE
   $ relper COMMAND
@@ -51,7 +58,7 @@ OPTIONS
   -s, --silent   don't show any logs
 ```
 
-_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/create/changelog.ts)_
+_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/create/changelog.ts)_
 
 ## `relper create:config`
 
@@ -67,7 +74,7 @@ OPTIONS
   -s, --silent       don't show any logs
 ```
 
-_See code: [src/commands/create/config.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/create/config.ts)_
+_See code: [src/commands/create/config.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/create/config.ts)_
 
 ## `relper help [COMMAND]`
 
@@ -95,7 +102,7 @@ OPTIONS
   -v, --version=version  new version
 ```
 
-_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/version/bump.ts)_
+_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/version/bump.ts)_
 
 ## `relper version:get`
 
@@ -109,5 +116,5 @@ OPTIONS
   -s, --silent                 return silent
 ```
 
-_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.1.0/src/commands/version/get.ts)_
+_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/version/get.ts)_
 <!-- commandsstop -->
