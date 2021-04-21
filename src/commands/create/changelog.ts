@@ -7,7 +7,8 @@ import rootDir from '../../helpers/root-dir'
 import log, { LogStatus } from '../../helpers/log-messages'
 import getAppCurrentData from '../../helpers/get-app-current-data'
 
-export default class CreateChangelog extends Command {
+// relper create:changelog [-r, -f, -s]
+export default class Changelog extends Command {
   static description = 'create a CHANGELOG file based on an initial template'
 
   static flags = {
@@ -21,7 +22,7 @@ export default class CreateChangelog extends Command {
   }
 
   private logger(message: string, status: LogStatus) {
-    const { flags: flag } = this.parse(CreateChangelog)
+    const { flags: flag } = this.parse(Changelog)
 
     if (!flag.silent) {
       log(message, status)
@@ -29,7 +30,7 @@ export default class CreateChangelog extends Command {
   }
 
   private copyFile() {
-    const { flags: flag } = this.parse(CreateChangelog)
+    const { flags: flag } = this.parse(Changelog)
     const templateFile = readFileSync(`${rootDir}/src/templates/CHANGELOG.md`, { encoding: 'utf-8' })
     const repoUrl = getAppCurrentData()?.repository.replace('.git', '')
     const addLastLine = templateFile.concat(`\n[unreleased]: ${repoUrl}/compare/unreleased...main\n`)
@@ -41,14 +42,15 @@ export default class CreateChangelog extends Command {
   }
 
   async run(): Promise<void> {
-    const { flags: flag } = this.parse(CreateChangelog)
+    const { flags: flag } = this.parse(Changelog)
     const fileName = `${rootDir}/CHANGELOG.md`
     const replaceChangelogQuestions = [
       {
         type: 'confirm',
         name: 'replaceChangelogWarning',
-        message: `${chalk.red
-          .inverse` WARNING! `} You are about to replace your existing ${chalk.underline`CHANGELOG.md`} file. Would you like to proceed?`,
+        message: `${chalk.red.inverse(' WARNING! ')} You are about to replace your existing ${chalk.underline(
+          'CHANGELOG.md'
+        )} file. Would you like to proceed?`,
       },
     ]
 

@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### To Add
 
+- Sonar cloud integration to the project
+
 ### To Change
+
+- Improve sonar cloud code smells score
 
 ### To Remove
 

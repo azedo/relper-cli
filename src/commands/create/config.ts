@@ -18,7 +18,8 @@ interface InteractiveAnswers {
   hotfixBranch: string
 }
 
-export default class CreateConfig extends Command {
+// relper create:config [-r, -f, -s, -i]
+export default class Config extends Command {
   static description = 'describe the command here'
 
   static flags = {
@@ -34,7 +35,7 @@ export default class CreateConfig extends Command {
   }
 
   private logger(message: string, status: LogStatus) {
-    const { flags: flag } = this.parse(CreateConfig)
+    const { flags: flag } = this.parse(Config)
 
     if (!flag.silent) {
       log(message, status)
@@ -53,7 +54,7 @@ export default class CreateConfig extends Command {
   }
 
   private addConfig(content?: ConfigType) {
-    const { flags: flag } = this.parse(CreateConfig)
+    const { flags: flag } = this.parse(Config)
     const filePath = `${rootDir}/package.json`
     const originalFile = readFileSync(filePath, { encoding: 'utf-8' })
     const parsedFile = JSON.parse(originalFile)
@@ -75,19 +76,19 @@ export default class CreateConfig extends Command {
       {
         type: 'input',
         name: 'mainBranch',
-        message: `What is your ${chalk.underline`main`} branch's name?`,
+        message: `What is your ${chalk.underline('main')} branch's name?`,
         default: 'main',
       },
       {
         type: 'confirm',
         name: 'developConfirm',
-        message: `Are you going to use ${chalk.underline`develop`} branches (git branching strategy)`,
+        message: `Are you going to use ${chalk.underline('develop')} branches (git branching strategy)`,
         default: true,
       },
       {
         type: 'input',
         name: 'developBranch',
-        message: `What is your ${chalk.underline`develop`} branch's name?`,
+        message: `What is your ${chalk.underline('develop')} branch's name?`,
         default: 'develop',
         when: function (answers: InteractiveAnswers) {
           return answers.developConfirm
@@ -96,13 +97,13 @@ export default class CreateConfig extends Command {
       {
         type: 'confirm',
         name: 'releaseConfirm',
-        message: `Are you going to use ${chalk.underline`release`} branches (git branching strategy)`,
+        message: `Are you going to use ${chalk.underline('release')} branches (git branching strategy)`,
         default: true,
       },
       {
         type: 'input',
         name: 'releaseBranch',
-        message: `What is your ${chalk.underline`release`} branch's name?`,
+        message: `What is your ${chalk.underline('release')} branch's name?`,
         default: 'release',
         when: function (answers: InteractiveAnswers) {
           return answers.releaseConfirm
@@ -111,13 +112,13 @@ export default class CreateConfig extends Command {
       {
         type: 'confirm',
         name: 'hotfixConfirm',
-        message: `Are you going to use ${chalk.underline`hotfix`} branches (git branching strategy)`,
+        message: `Are you going to use ${chalk.underline('hotfix')} branches (git branching strategy)`,
         default: true,
       },
       {
         type: 'input',
         name: 'hotfixBranch',
-        message: `What is your ${chalk.underline`hotfix`} branch's name?`,
+        message: `What is your ${chalk.underline('hotfix')} branch's name?`,
         default: 'release',
         when: function (answers: InteractiveAnswers) {
           return answers.hotfixConfirm
@@ -137,7 +138,7 @@ export default class CreateConfig extends Command {
   }
 
   async run(): Promise<void> {
-    const { flags: flag } = this.parse(CreateConfig)
+    const { flags: flag } = this.parse(Config)
     const appData = getAppCurrentData()
     const replaceConfigQuestions = [
       {

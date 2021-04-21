@@ -5,7 +5,7 @@ import log from '../../helpers/log-messages'
 import getAppCurrentData from '../../helpers/get-app-current-data'
 import getNextVersion from '../../helpers/get-next-version'
 
-export default class VersionGet extends Command {
+export default class Get extends Command {
   static description = 'show the current version of the app'
 
   static flags = {
@@ -15,7 +15,7 @@ export default class VersionGet extends Command {
   }
 
   async run(): Promise<string | undefined> {
-    const { flags: flag } = this.parse(VersionGet)
+    const { flags: flag } = this.parse(Get)
     const nextVersion = await getNextVersion()
     const currentVersion = getAppCurrentData(flag.folderPath)
     let returnText = `The current version is ${chalk.inverse(' ' + currentVersion?.version + ' ')}`

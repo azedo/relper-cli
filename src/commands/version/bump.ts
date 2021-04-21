@@ -25,7 +25,7 @@ interface OtherVersionQuestion {
   validate: (value: string) => true | string
 }
 
-export default class VersionBump extends Command {
+export default class Bump extends Command {
   static description = 'bump the app version to the next major, minor or patch'
 
   static flags = {
@@ -146,7 +146,7 @@ export default class VersionBump extends Command {
 
   // TODO: Improve cognitive complexity score!
   async run(): Promise<string | boolean | void> {
-    const { flags: flag } = this.parse(VersionBump)
+    const { flags: flag } = this.parse(Bump)
     const appData = getAppCurrentData()
     const checkForUpdates = await checkChangelog(true)
 

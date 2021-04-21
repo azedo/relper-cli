@@ -10,6 +10,7 @@
     "housekeeping",
     "configs",
     "changelog",
-    "release"
+    "release",
+    "codesmells"
   ]
 }
