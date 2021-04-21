@@ -37,7 +37,7 @@ export default class Bump extends Command {
   private startLog = (appName?: string, version?: string): void => {
     if (appName && version) {
       this.log('')
-      this.log(`Bumping the version of the app ${chalk.magenta(`${appName} (${version})`)}`)
+      this.log('Bumping the version of the app ' + chalk.magenta(`${appName} (${version})`))
       this.log('')
     }
   }
@@ -144,7 +144,6 @@ export default class Bump extends Command {
     })
   }
 
-  // TODO: Improve cognitive complexity score!
   async run(): Promise<string | boolean | void> {
     const { flags: flag } = this.parse(Bump)
     const appData = getAppCurrentData()

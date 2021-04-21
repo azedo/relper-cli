@@ -144,8 +144,9 @@ export default class Config extends Command {
       {
         type: 'confirm',
         name: 'replaceConfigWarning',
-        message: `${chalk.red
-          .inverse` WARNING! `} You are about to replace your existing ${chalk.underline`relper configs`}. Would you like to proceed?`,
+        message: `${chalk.red.inverse(' WARNING! ')} You are about to replace your existing ${chalk.underline(
+          'relper configs'
+        )}. Would you like to proceed?`,
       },
     ]
 
