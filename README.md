@@ -28,7 +28,7 @@ $ npm install -g relper-cli
 $ relper COMMAND
 running command...
 $ relper (-v|--version|version)
-relper-cli/0.2.0 darwin-x64 node-v12.18.3
+relper-cli/0.2.1 darwin-x64 node-v12.18.3
 $ relper --help [COMMAND]
 USAGE
   $ relper COMMAND
@@ -58,7 +58,7 @@ OPTIONS
   -s, --silent   don't show any logs
 ```
 
-_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/create/changelog.ts)_
+_See code: [src/commands/create/changelog.ts](https://github.com/azedo/relper-cli/blob/v0.2.1/src/commands/create/changelog.ts)_
 
 ## `relper create:config`
 
@@ -74,7 +74,7 @@ OPTIONS
   -s, --silent       don't show any logs
 ```
 
-_See code: [src/commands/create/config.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/create/config.ts)_
+_See code: [src/commands/create/config.ts](https://github.com/azedo/relper-cli/blob/v0.2.1/src/commands/create/config.ts)_
 
 ## `relper help [COMMAND]`
 
@@ -102,7 +102,7 @@ OPTIONS
   -v, --version=version  new version
 ```
 
-_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/version/bump.ts)_
+_See code: [src/commands/version/bump.ts](https://github.com/azedo/relper-cli/blob/v0.2.1/src/commands/version/bump.ts)_
 
 ## `relper version:get`
 
@@ -116,5 +116,5 @@ OPTIONS
   -s, --silent                 return silent
 ```
 
-_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.2.0/src/commands/version/get.ts)_
+_See code: [src/commands/version/get.ts](https://github.com/azedo/relper-cli/blob/v0.2.1/src/commands/version/get.ts)_
 <!-- commandsstop -->
