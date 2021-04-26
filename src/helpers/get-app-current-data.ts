@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs'
-import rootDir from './root-dir'
+import pkgDir from 'pkg-dir'
 
 interface ReturnType {
   name: string
@@ -18,15 +18,16 @@ interface ReturnType {
 /**
  * Get the current version from the package.json file
  *
- * @param {string} folderPath The root dir of the codebase
+ * @param {string} folderPath The root dir of this codebase
  * @return {ReturnType | undefined} The current app version or undefined if not found
  */
-export default function getAppCurrentData(folderPath: string = rootDir): ReturnType | undefined {
+export default function getAppCurrentData(folderPath = './'): ReturnType | undefined {
   const fileName = 'package.json'
 
   try {
-    const readFile = readFileSync(`${folderPath}/${fileName}`, { encoding: 'utf-8' })
-    const { name, version, repository, relper } = JSON.parse(readFile)
+    const rootDir = pkgDir.sync(folderPath)
+    const fileContents = readFileSync(`${rootDir}/${fileName}`, { encoding: 'utf-8' })
+    const { name, version, repository, relper } = JSON.parse(fileContents)
 
     return {
       name,

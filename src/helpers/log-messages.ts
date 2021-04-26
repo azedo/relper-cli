@@ -10,7 +10,7 @@ export type LogStatus = 'info' | 'success' | 'error' | 'warning'
  * @returns {void} Since it's a logging function for the terminal, it doesn't return anything
  */
 export default function log(message: unknown, status: LogStatus = 'info'): void {
-  let logger = chalk.blue
+  let logger = chalk.white
 
   switch (status) {
     case 'success':
@@ -25,7 +25,12 @@ export default function log(message: unknown, status: LogStatus = 'info'): void 
       logger = chalk.keyword('orange')
       break
   }
-  const string = logger(`[RELPER | ${chalk.inverse(' ' + status.toUpperCase() + ' ')}] ${message}`)
+  const string = `RELPER ${logger(chalk.bold.inverse(' ' + status.toUpperCase() + ' '))}: ${message}`
 
   console.log(string)
+
+  // These are the native commands from an Oclif extended class
+  // this.log('This is a log!')
+  // this.warn('This is a warning!')
+  // this.error('This is an error!')
 }

@@ -2,6 +2,7 @@ import { Command, flags } from '@oclif/command'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
+import pkgDir from 'pkg-dir'
 
 import rootDir from '../../helpers/root-dir'
 import log, { LogStatus } from '../../helpers/log-messages'
@@ -31,24 +32,28 @@ export default class Changelog extends Command {
 
   private copyFile() {
     const { flags: flag } = this.parse(Changelog)
+    const userRootFolder = pkgDir.sync('./')
     const templateFile = readFileSync(`${rootDir}/src/templates/CHANGELOG.md`, { encoding: 'utf-8' })
     const repoUrl = getAppCurrentData()?.repository.replace('.git', '')
     const addLastLine = templateFile.concat(`\n[unreleased]: ${repoUrl}/compare/unreleased...main\n`)
 
-    if (flag.replace) this.logger('CHANGELOG.md replaced', 'success')
+    if (flag.replace) this.logger('CHANGELOG.md replaced!', 'success')
     if (!flag.replace) this.logger('CHANGELOG.md created!', 'success')
 
-    return writeFileSync('./CHANGELOG.md', addLastLine, { encoding: 'utf-8' })
+    return writeFileSync(`${userRootFolder}/CHANGELOG.md`, addLastLine, { encoding: 'utf-8' })
   }
 
   async run(): Promise<void> {
     const { flags: flag } = this.parse(Changelog)
-    const fileName = `${rootDir}/CHANGELOG.md`
+    const userRootFolder = pkgDir.sync('./')
+    const fileName = `${userRootFolder}/CHANGELOG.md`
     const replaceChangelogQuestions = [
       {
         type: 'confirm',
         name: 'replaceChangelogWarning',
-        message: `${chalk.red.inverse(' WARNING! ')} You are about to replace your existing ${chalk.underline(
+        message: `RELPER ${chalk
+          .keyword('orange')
+          .inverse(' WARNING ')}: You are about to replace your existing ${chalk.underline(
           'CHANGELOG.md'
         )} file. Would you like to proceed?`,
       },

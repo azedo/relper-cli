@@ -1,10 +1,10 @@
 import * as path from 'path'
 
 /**
- * Get the absolute path of the project's folder.
+ * Get the absolute path of this project's folder.
  *
  * @function rootPath
- * @return {string} The absolute path to the project folder
+ * @return {string} The absolute path to this project folder
  */
 function rootPath(): string {
   const getBinPath = path.dirname(require.main?.filename || process.mainModule?.filename || '')
